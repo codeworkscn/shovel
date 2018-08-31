@@ -1,0 +1,6 @@
+P4:
+  host = "${P4HOST}"
+  port = "${P4PORT}"
+  user = "${P4USER}"
+  passwd = "${P4PASSWD}"
+  client = "${P4CLIENT}"
