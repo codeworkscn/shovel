@@ -22,7 +22,7 @@ REQUIRED = [
     'pylint',
     'jsonpickle',
     'pyyaml',
-    'P4',
+    'p4python',
 ]
 
 # What packages are optional?

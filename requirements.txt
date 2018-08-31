@@ -1,4 +1,4 @@
 pylint
 jsonpickle
 pyyaml
-P4
+p4python
