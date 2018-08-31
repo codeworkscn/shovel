@@ -6,7 +6,8 @@ class ShovelConfig(object):
 
     with open("shovel_config.yaml", 'r') as stream:
         try:
-            config_dict = yaml.load(stream)            
+            config_dict = yaml.load(stream)     
+            print("shovel config loaded")       
         except yaml.YAMLError as exc:
             print(exc)
         

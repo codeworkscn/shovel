@@ -1,6 +1,3 @@
-from .config import *
-from .p4integrate import *
-
 
 if __name__ == "__main__":
-    p4integrate()
+    print("you are using shovel, please use root level tools straightly")

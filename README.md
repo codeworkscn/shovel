@@ -2,9 +2,14 @@
 Tools suite for DevOps, build by Python
 
 
-## shovel-p4
+## feature list
 
-> p4 utils
+- p4 integrate by job
+- ...
 
-refer: https://www.perforce.com/perforce/doc.current/manuals/p4script/Content/P4Script/python.programming.html
+### references
+
+- [P4Python API Scripting Guide (2017.2)](https://www.perforce.com/perforce/doc.current/manuals/p4python/index.html)
+- [P4Python Classes](https://www.perforce.com/perforce/doc.current/manuals/p4python/index.html#P4Python/python.classes.html%3FTocPath%3DP4Python%7CP4Python%2520Classes%7C_____0)
+
 
