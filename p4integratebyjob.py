@@ -25,7 +25,7 @@ def execute(jobName):
   target = integrateConfig["target"]
 
   p4Client.p4_integrate_by_changelists(source,target,changelistsToMerge,saveToChangeId)
-  print("execute done, jobName=%s, saveToChangeId=%s" % (jobName, saveToChangeId))
+  print("integrate done, jobName=%s, saveToChangeId=%s" % (jobName, saveToChangeId))
 
   p4Client.p4_resolve_accept_merge_by_change(saveToChangeId)
   print("auto resolve accept merge done, there may remain some conflict need manual check")
