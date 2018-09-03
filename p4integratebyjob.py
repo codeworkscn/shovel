@@ -28,7 +28,8 @@ def execute(jobName):
   print("integrate done, jobName=%s, saveToChangeId=%s" % (jobName, saveToChangeId))
 
   p4Client.p4_resolve_accept_merge_by_change(saveToChangeId)
-  print("auto resolve accept merge done, there may remain some conflict need manual check")
+
+  print("\n\nauto resolve accept merge done, there may remain some conflict need manual check")
   print("please check pending changelist [%s], add comment, then submit your changes." % saveToChangeId)
 
 def main(argv=None):

@@ -35,6 +35,11 @@ class P4Client(object):
   def get_p4(self):
     return self.p4
   
+  def p4_describe_changelist(self, changeId):
+    describe = self.p4.run("describe", changeId)
+    print("describe : %s" % str(describe))
+    return describe
+
   # return changelist id
   def p4_new_changelist(self):
     changespec = self.p4.fetch_change()
@@ -86,9 +91,18 @@ class P4Client(object):
       argv.append(saveToChangeId)
     argv.append(sourceScope)
     argv.append(target)
-    result = self.p4.run(argv)
 
-    print("integrate changelist done, changelist=%s" % changelist)
+    try:
+      result = self.p4.run(argv)
+      print("integrate changelist done, changelist=%s" % changelist)
+    except P4Exception as ex:
+      if "already integrated" in str(ex):
+        print("integrate changelist skipped due already integrated, changelist=%s" % changelist)
+        return ""
+      else:
+        print("integrate changelist failure, changelist=%s" % changelist)
+        raise ex
+   
     return result
 
   def p4_integrate_by_changelists(self, source, target, changelists, saveToChangeId=""):
@@ -106,5 +120,10 @@ class P4Client(object):
     print("integrate_by_changelists done, saveToChangeId=%s" % saveToChangeId)
   
   def p4_resolve_accept_merge_by_change(self, changeId):
-    result = self.p4.run("resolve", "-am", "-c", changeId)
-    print("resolve by changeId done, changeId=%s" % changeId)
+    try:
+      # result = self.p4.run("resolve", "-am", "-c", changeId)
+      # result too large, avoid output
+      self.p4.run("resolve", "-am", "-c", changeId)
+      print("resolve by changeId done, changeId=%s" % changeId)
+    except P4Exception as ex:
+      print("resolve by changeId failure, changeId=%s, exceptionDetails=%s" % (changeId, str(ex)))      
