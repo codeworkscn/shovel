@@ -4,8 +4,13 @@ Tools suite for DevOps, build by Python
 
 ## feature list
 
-- p4 integrate by job
-- ...
+- VSC tools
+  - [x] p4 integrate by job
+  - [ ] initial import git repository from p4 export
+  - [ ] auto sync from p4 to git
+- others
+  - ...
+
 
 ### references
 

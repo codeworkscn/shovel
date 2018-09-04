@@ -2,3 +2,4 @@ pylint
 jsonpickle
 pyyaml
 p4python
+gitpython

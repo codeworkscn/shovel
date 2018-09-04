@@ -23,6 +23,7 @@ REQUIRED = [
     'jsonpickle',
     'pyyaml',
     'p4python',
+    'gitpython',
 ]
 
 # What packages are optional?
@@ -64,7 +65,7 @@ setup(
     author_email=EMAIL,
     python_requires=REQUIRES_PYTHON,
     url=URL,
-    packages=find_packages(exclude=('tests','docs')),
+    packages=find_packages(exclude=('tests', 'docs')),
     install_requires=REQUIRED,
     extras_require=EXTRAS,
     include_package_data=True,
