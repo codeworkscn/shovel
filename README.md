@@ -1,8 +1,8 @@
-# shovel
+## shovel
 Tools suite for DevOps, build by Python
 
 
-## feature list
+### feature list
 
 - VSC tools
   - [x] p4 integrate by job
@@ -11,6 +11,19 @@ Tools suite for DevOps, build by Python
 - others
   - ...
 
+### config guide
+
+configuration items are locate in configuration file `shovel_config.yaml`. 
+
+init your own configuration, follow steps:
+1. copy `shovel_config_template.yaml` as `shovel_config.yaml`
+    - Linux `cp shovel_config_template.yaml shovel_config.yaml`
+    - Windows `copy shovel_config_template.yaml shovel_config.yaml`
+1. set configuration value in `shovel_config.yaml`
+
+### tools usage samples
+
+- `python2 p4integratebyjob.py -j MyP4JobId`
 
 ### references
 
