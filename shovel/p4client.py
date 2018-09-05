@@ -61,11 +61,9 @@ class P4Client(object):
         print("new changelist created, changeId=%s" % changeId)
         return changeId
 
-    def p4_list_changelist_by_job(self, jobName, depotPath=""):
+    def p4_list_changelist_by_job(self, jobName):
         assert jobName, "jobName is empty"
         argv = ["fixes"]
-        if depotPath:
-            argv.append(depotPath)
         argv.append("-j")
         argv.append(jobName)
 
@@ -102,7 +100,8 @@ class P4Client(object):
             result = self.p4.run(argv)
             print("integrate changelist done, changelist=%s" % changelist)
         except P4Exception as ex:
-            if "already integrated" in str(ex):
+            exception_str = str(ex)
+            if "already integrated" in exception_str or "no such file" in exception_str:
                 print(
                     "integrate changelist skipped due already integrated, changelist=%s" % changelist)
                 return ""
