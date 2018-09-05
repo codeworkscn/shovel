@@ -1,9 +1,9 @@
 P4:
-  port : "${P4PORT}" // e.g. localhost:1666
+  port : "${P4PORT}" # e.g. localhost:1666
   user : "${P4USER}"
   passwd : "${P4PASSWD}"
   client : "${P4CLIENT}"
 
 P4integrate:
-  source : ""  // P4integrate p4 depot source path
-  target : ""  // P4integrate p4 depot target path
+  source : ""  # P4integrate p4 depot source path
+  target : ""  #  P4integrate p4 depot target path
