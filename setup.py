@@ -24,6 +24,7 @@ REQUIRED = [
     'pyyaml',
     'p4python',
     'gitpython',
+    'elasticsearch>=6.0.0,<7.0.0'
 ]
 
 # What packages are optional?

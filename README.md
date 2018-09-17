@@ -1,6 +1,10 @@
 ## shovel
 Tools suite for DevOps, build by Python
 
+### Ho to Build
+
+- install requirements: `python2 -m pip install -r requirements.txt`
+- install shovel: `python2 setup.py install`
 
 ### feature list
 
@@ -8,6 +12,9 @@ Tools suite for DevOps, build by Python
   - [x] p4 integrate by job
   - [ ] initial import git repository from p4 export
   - [ ] auto sync from p4 to git
+- elasticsearch tools
+  - [ ] data reindex migration from index to another
+  - [ ] data compare between indices 
 - others
   - ...
 

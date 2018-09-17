@@ -7,3 +7,10 @@ P4:
 P4integrate:
   source : ""  # P4integrate p4 depot source path
   target : ""  #  P4integrate p4 depot target path
+
+
+ES:
+  host : "localhost"  # ES host
+  port : 9200         # ES port
+  user : ~
+  pswd : ~
