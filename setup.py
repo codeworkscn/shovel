@@ -80,9 +80,11 @@ setup(
         'Programming Language :: Python :: 2.7'
     ],
     data_files=[
-        ('config', ['shovel_config_template.yaml', 'shovel_config.yaml']),
-        ('config', ['config/ElasticCompare/es-compare-query-stmt-storage-quarantine.json',
-                    'config/ElasticCompare/es-compare-query-stmt-violation.json'])],
+        ('config', ['shovel_config_template.yaml',
+                    'shovel_config.yaml',
+                    'logging_config.ini']),
+        ('config-elastic-compare', ['config/ElasticCompare/es-compare-query-stmt-storage-quarantine.json',
+                                    'config/ElasticCompare/es-compare-query-stmt-violation.json'])],
     scripts=['scripts/p4integratebyjob.py',
              'scripts/elasticsearchcompare.py']
 )
