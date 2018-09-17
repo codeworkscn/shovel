@@ -5,6 +5,9 @@ Tools suite for DevOps, build by Python
 
 - install requirements: `python2 -m pip install -r requirements.txt`
 - install shovel: `python2 setup.py install`
+- create tar.gz: `python2 setup.py sdist --formats=gztar`
+- create zip: `python2 setup.py sdist --formats=zip`
+- install from zip: `python2 -m pip install shovel-0.0.1.zip`
 
 ### feature list
 
@@ -13,8 +16,9 @@ Tools suite for DevOps, build by Python
   - [ ] initial import git repository from p4 export
   - [ ] auto sync from p4 to git
 - elasticsearch tools
+  - [x] data compare between indices
   - [ ] data reindex migration from index to another
-  - [ ] data compare between indices 
+  
 - others
   - ...
 
@@ -30,9 +34,9 @@ init your own configuration, follow steps:
 
 ### tools usage samples
 
-- `python2 p4integratebyjob.py -j MyP4JobId`
-- `python2 shovel/ElasticCompare.py --leftIndex=tmcas_violation_2018.09  --rightIndex=tmcas_violation_compare_2018.09 --queryStmtFile=samples/ElasticCompare/es-compare-query-stmt-violation.json --keyFields=tm_violator,tm_timestamp,tm_trace_id`
-- `python2 shovel/ElasticCompare.py --leftIndex=tmcas_quarantine_2018.09  --rightIndex=tmcas_quarantine_compare_2018.09 --queryStmtFile=samples/ElasticCompare/es-compare-query-stmt-storage-quarantine.json --keyFields=tm_violator,tm_timestamp,tm_trace_id`
+- `python2 scripts/p4integratebyjob.py -j MyP4JobId`
+- `python2 scripts/elasticsearchcompare.py --leftIndex=tmcas_violation_2018.09  --rightIndex=tmcas_violation_compare_2018.09 --queryStmtFile=config/ElasticCompare/es-compare-query-stmt-violation.json --keyFields=tm_violator,tm_timestamp,tm_trace_id`
+- `python2 scripts/elasticsearchcompare.py --leftIndex=tmcas_quarantine_2018.09  --rightIndex=tmcas_quarantine_compare_2018.09 --queryStmtFile=config/ElasticCompare/es-compare-query-stmt-storage-quarantine.json --keyFields=tm_violator,tm_timestamp,tm_trace_id`
 
 ### references
 
