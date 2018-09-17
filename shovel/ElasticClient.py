@@ -1,3 +1,4 @@
+from collections import OrderedDict
 from datetime import datetime
 from elasticsearch import Elasticsearch
 from shovel.config import ShovelConfig
@@ -17,5 +18,16 @@ class ElasticClient(object):
             print("Exception: " + str(e))
 
     def health(self):
-        response = self.es.cat.health()
-        print("response=%s" % str(response))
+        res = self.es.cat.health()
+        print("res=%s" % str(res))
+
+    def order_by_field_name(self, dict):
+        return OrderedDict(sorted(dict.items(), key=lambda t: t[0]))
+
+    def search(self, index, indexType, body):
+        res = self.es.search(index, indexType, body)
+        hits = res["hits"]["hits"]
+        return map(lambda doc: self.order_by_field_name(doc["_source"]), hits)
+
+    def get_elasticsearch(self):
+        return self.es

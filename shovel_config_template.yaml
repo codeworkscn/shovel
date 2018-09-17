@@ -14,3 +14,8 @@ ES:
   port : 9200         # ES port
   user : ~
   pswd : ~
+
+EScompare:
+  leftIndex: "index_left_*"
+  rightIndex: "index_right_*"
+

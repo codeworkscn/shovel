@@ -31,6 +31,8 @@ init your own configuration, follow steps:
 ### tools usage samples
 
 - `python2 p4integratebyjob.py -j MyP4JobId`
+- `python2 shovel/ElasticCompare.py --leftIndex=tmcas_violation_2018.09  --rightIndex=tmcas_violation_compare_2018.09 --queryStmtFile=samples/ElasticCompare/es-compare-query-stmt-violation.json --keyFields=tm_violator,tm_timestamp,tm_trace_id`
+- `python2 shovel/ElasticCompare.py --leftIndex=tmcas_quarantine_2018.09  --rightIndex=tmcas_quarantine_compare_2018.09 --queryStmtFile=samples/ElasticCompare/es-compare-query-stmt-storage-quarantine.json --keyFields=tm_violator,tm_timestamp,tm_trace_id`
 
 ### references
 
@@ -38,4 +40,3 @@ init your own configuration, follow steps:
 - [P4Python Classes](https://www.perforce.com/perforce/doc.current/manuals/p4python/index.html#P4Python/python.classes.html%3FTocPath%3DP4Python%7CP4Python%2520Classes%7C_____0)
 - [GitPython Tutorial](https://gitpython.readthedocs.io/en/stable/tutorial.html)
 - [git-p4 Import from and submit to Perforce repositories](https://git-scm.com/docs/git-p4)
- 
