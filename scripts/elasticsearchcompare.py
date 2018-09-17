@@ -3,8 +3,7 @@ import os
 import sys
 import getopt
 
-from ElasticClient import ElasticClient
-from StringUtils import StringUtils
+from shovel import ElasticClient, StringUtils
 
 
 class Usage(Exception):
