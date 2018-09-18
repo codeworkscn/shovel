@@ -28,19 +28,20 @@ def transform_list_to_map(docs, key_fields):
     return {key_from_doc(doc, key_fields): doc for doc in docs}
 
 
-def compare_dictionaries(leftDict, rightDict):
+def compare_dictionaries(leftDict, rightDict, verbose=False):
     same = set()
     different = set()
     sameKeySet = set(leftDict.keys()) & set(rightDict.keys())
     for key in sameKeySet:
         if leftDict[key] == rightDict[key]:
             same.add(key)
-        else:
-            if key not in different:
-                different.add(key)
-                leftJson = StringUtils.obj_to_json(leftDict[key])
-                rightJson = StringUtils.obj_to_json(rightDict[key])
-                print("key=%s, leftJson=%s, rightJson=%s" %
+            continue
+        if key not in different:
+            different.add(key)
+            leftJson = StringUtils.obj_to_json(leftDict[key])
+            rightJson = StringUtils.obj_to_json(rightDict[key])
+            if verbose:
+                print("find diffrent docs, key=%s, leftJson=%s, rightJson=%s" %
                       (key, leftJson, rightJson))
     same_key_count = len(sameKeySet)
     same_count = len(same)
@@ -50,7 +51,7 @@ def compare_dictionaries(leftDict, rightDict):
     return diffrent_count
 
 
-def execute(leftIndex, rightIndex, queryStmtFile, key_fields):
+def execute(leftIndex, rightIndex, queryStmtFile, key_fields, verbose=False):
     queryStmt = StringUtils.load_json_from_file(queryStmtFile)
     if queryStmt == None:
         print >>sys.stderr, "load query stmt from file failure"
@@ -70,11 +71,8 @@ def execute(leftIndex, rightIndex, queryStmtFile, key_fields):
     keyToDocMapLeft = transform_list_to_map(docsLeft, key_fields)
     keyToDocMapRight = transform_list_to_map(docsRight, key_fields)
 
-    # print(keyToDocMapLeft)
-    # print(keyToDocMapRight)
-
     unmatched_item_count = compare_dictionaries(
-        keyToDocMapLeft, keyToDocMapRight)
+        keyToDocMapLeft, keyToDocMapRight, verbose)
     print("unmatched_item_count=%d" % (unmatched_item_count))
 
 
@@ -85,7 +83,7 @@ def main(argv=None):
         try:
             opts, args = getopt.getopt(
                 argv[1:],
-                "hl:r:q:k:",
+                "hvl:r:q:k:",
                 ["help",
                  "leftIndex=",
                  "rightIndex=",
@@ -98,7 +96,11 @@ def main(argv=None):
         print >>sys.stderr, "for help use --help"
         return 2
 
+    verbose = False
     for o, a in opts:
+        if o == "-v":
+            verbose = True
+            print("verbose mode")
         if o in ("-h", "--help"):
             usage()
             return 0
@@ -121,7 +123,8 @@ def main(argv=None):
     elif not 'keyFields' in locals():
         usage()
     else:
-        execute(leftIndex, rightIndex, queryStmtFile, keyFields.split(","))
+        execute(leftIndex, rightIndex, queryStmtFile,
+                keyFields.split(","), verbose)
 
 
 if __name__ == "__main__":
