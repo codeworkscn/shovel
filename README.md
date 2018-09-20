@@ -36,7 +36,7 @@ init your own configuration, follow steps:
 
 - `python2 scripts/p4integratebyjob.py -j MyP4JobId`
 - `python2 scripts/elasticsearchcompare.py --leftIndex=tmcas_violation_2018.09  --rightIndex=tmcas_violation_compare_2018.09 --queryStmtFile=config/ElasticCompare/es-compare-query-stmt-violation.json --keyFields=tm_violator,tm_timestamp,tm_trace_id`
-- `python2 scripts/elasticsearchcompare.py --leftIndex=tmcas_quarantine_2018.09  --rightIndex=tmcas_quarantine_compare_2018.09 --queryStmtFile=config/ElasticCompare/es-compare-query-stmt-storage-quarantine.json --keyFields=tm_violator,tm_timestamp,tm_trace_id`
+- `python2 scripts/elasticsearchcompare.py --leftIndex=tmcas_quarantine_2018.09  --rightIndex=tmcas_quarantine_compare_2018.09 --queryStmtFile=config/ElasticCompare/es-compare-query-stmt-storage-quarantine.json --keyFields=tm_unique_log_id`
 
 ### references
 

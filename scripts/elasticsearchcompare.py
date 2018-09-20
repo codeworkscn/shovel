@@ -2,8 +2,10 @@
 import os
 import sys
 import getopt
-
+import pprint
 from shovel import ElasticClient, StringUtils
+
+pp = pprint.PrettyPrinter(indent=2)
 
 
 class Usage(Exception):
@@ -31,7 +33,19 @@ def transform_list_to_map(docs, key_fields):
 def compare_dictionaries(leftDict, rightDict, verbose=False):
     same = set()
     different = set()
-    sameKeySet = set(leftDict.keys()) & set(rightDict.keys())
+    leftKeySet = set(leftDict.keys())
+    rightKeySet = set(rightDict.keys())
+
+    leftMissKeySet = rightKeySet - leftKeySet
+    rightMissKeySet = leftKeySet - rightKeySet
+    if leftMissKeySet:
+        print("find left missed keys, count=%d, keys:" % len(leftMissKeySet))
+        pp.pprint(leftMissKeySet)
+    if rightMissKeySet:
+        print("find right missed keys, count=%d, keys:" % len(rightMissKeySet))
+        pp.pprint(rightMissKeySet)
+
+    sameKeySet = leftKeySet & rightKeySet
     for key in sameKeySet:
         if leftDict[key] == rightDict[key]:
             same.add(key)
