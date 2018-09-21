@@ -7,12 +7,27 @@
     ]
   },
   "query": {
-    "range": {
-      "tm_timestamp": {
-        "gte": "2018-09-17 11:00:00",
-        "lt": "2018-09-20 00:00:00",
-        "format": "yyyy-MM-dd HH:mm:ss"
-      }
+    "bool": {
+      "filter": [
+        {
+          "range": {
+            "tm_timestamp": {
+              "gte": "2018-09-17 11:00:00",
+              "lt": "2018-09-21 00:00:00",
+              "format": "yyyy-MM-dd HH:mm:ss"
+            }
+          }
+        }
+      ],
+      "must_not": [
+        {
+          "terms": {
+            "tm_company_guid": [
+              "59978a80-20e6-11e7-8a1a-8deffe54c008"
+            ]
+          }
+        }
+      ]
     }
   },
   "sort": [

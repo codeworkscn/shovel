@@ -2,10 +2,7 @@
 import os
 import sys
 import getopt
-import pprint
 from shovel import ElasticClient, StringUtils
-
-pp = pprint.PrettyPrinter(indent=2)
 
 
 class Usage(Exception):
@@ -40,10 +37,10 @@ def compare_dictionaries(leftDict, rightDict, verbose=False):
     rightMissKeySet = leftKeySet - rightKeySet
     if leftMissKeySet:
         print("find left missed keys, count=%d, keys:" % len(leftMissKeySet))
-        pp.pprint(leftMissKeySet)
+        print(StringUtils.obj_to_json(list(leftMissKeySet)))
     if rightMissKeySet:
         print("find right missed keys, count=%d, keys:" % len(rightMissKeySet))
-        pp.pprint(rightMissKeySet)
+        print(StringUtils.obj_to_json(list(rightMissKeySet)))
 
     sameKeySet = leftKeySet & rightKeySet
     for key in sameKeySet:
