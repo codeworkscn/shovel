@@ -18,7 +18,13 @@ Tools suite for DevOps, build by Python
 - elasticsearch tools
   - [x] data compare between indices
   - [ ] data reindex migration from index to another
-  
+- file tools
+  - [x] transform csv to json
+  - [x] transform json to csv
+- monitor tools
+  - [ ] cron job manage
+- mail tools
+  - [ ] new mail receive trigger
 - others
   - ...
 
@@ -30,13 +36,15 @@ init your own configuration, follow steps:
 1. copy `shovel_config_template.yaml` as `shovel_config.yaml`
     - Linux `cp shovel_config_template.yaml shovel_config.yaml`
     - Windows `copy shovel_config_template.yaml shovel_config.yaml`
-1. set configuration value in `shovel_config.yaml`
+2. set configuration value in `shovel_config.yaml`
 
 ### tools usage samples
 
 - `python2 scripts/p4integratebyjob.py -j MyP4JobId`
 - `python2 scripts/elasticsearchcompare.py --leftIndex=tmcas_violation_2018.09  --rightIndex=tmcas_violation_compare_2018.09 --queryStmtFile=config/ElasticCompare/es-compare-query-stmt-violation.json --keyFields=tm_violator,tm_timestamp,tm_trace_id`
 - `python2 scripts/elasticsearchcompare.py --leftIndex=tmcas_quarantine_2018.09  --rightIndex=tmcas_quarantine_compare_2018.09 --queryStmtFile=config/ElasticCompare/es-compare-query-stmt-storage-quarantine.json --keyFields=tm_unique_log_id`
+- `python2 scripts/csv2json.py --source=a.csv --target=a.json`
+- `python2 scripts/json2csv.py --source=b.json --target=b.csv`
 
 ### references
 
@@ -44,3 +52,4 @@ init your own configuration, follow steps:
 - [P4Python Classes](https://www.perforce.com/perforce/doc.current/manuals/p4python/index.html#P4Python/python.classes.html%3FTocPath%3DP4Python%7CP4Python%2520Classes%7C_____0)
 - [GitPython Tutorial](https://gitpython.readthedocs.io/en/stable/tutorial.html)
 - [git-p4 Import from and submit to Perforce repositories](https://git-scm.com/docs/git-p4)
+- [Python2 argparse](https://docs.python.org/2/library/argparse.html)
