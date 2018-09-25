@@ -2,6 +2,8 @@ import csv
 import json
 
 
+# TODO: Unicode support for csv
+# refer: https://docs.python.org/2/library/csv.html?highlight=csv#examples
 class FileTransform(object):
 
     @staticmethod
