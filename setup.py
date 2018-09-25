@@ -19,7 +19,6 @@ VERSION = None
 
 # What packages are required for this module to be executed?
 REQUIRED = [
-    'pylint',
     'jsonpickle',
     'pyyaml',
     'p4python',
