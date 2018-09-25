@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import csv
 import json
 
@@ -28,7 +30,7 @@ class FileTransform(object):
               (json_file_name, csv_file_name))
 
         # refer from: https://docs.python.org/2/library/csv.html?highlight=csv#csv.writer
-        #  If csvfile is a file object, it must be opened with the ‘b’ flag on platforms where that makes a difference.
+        #  If csvfile is a file object, it must be opened with the 'b' flag on platforms where that makes a difference.
 
         with open(json_file_name, 'rb') as json_file, open(csv_file_name, 'wb') as csv_file:
             jsonArrays = json.load(json_file)

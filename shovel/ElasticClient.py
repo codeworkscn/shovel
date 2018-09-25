@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from collections import OrderedDict
 from datetime import datetime
 from elasticsearch import Elasticsearch

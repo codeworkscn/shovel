@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from P4 import P4, P4Exception
 from shovel.config import ShovelConfig
