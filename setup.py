@@ -50,8 +50,7 @@ except FileNotFoundError:
 try:
     config_file_template_path = os.path.join(
         here, 'shovel_config_template.yaml')
-    #config_file_path = os.path.join(here, 'shovel_config.yaml')
-    print('config_file_path=%s' % config_file_path)
+    config_file_path = os.path.join(here, 'shovel_config.yaml')
     if not os.path.exists(config_file_path):
         shutil.copyfile(config_file_template_path, config_file_path)
         print('copy config file from template, config_file_path=%s' %
