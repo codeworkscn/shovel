@@ -3,8 +3,9 @@
 
 import io
 import os
+import os.path
 import sys
-from shutil import rmtree
+import shutil
 
 from setuptools import find_packages, setup, Command
 
@@ -12,8 +13,8 @@ from setuptools import find_packages, setup, Command
 NAME = 'shovel'
 DESCRIPTION = "Tools suite for DevOps, build by Python"
 URL = ''
-EMAIL = 'chad_chen@trendmicro.com'
-AUTHOR = 'Chad Chen'
+EMAIL = 'codeworkscn@gmail.com'
+AUTHOR = 'codeworkscn'
 REQUIRES_PYTHON = '>=2.7.0'
 VERSION = None
 
@@ -46,6 +47,18 @@ try:
 except FileNotFoundError:
     long_description = DESCRIPTION
 
+try:
+    config_file_template_path = os.path.join(
+        here, 'shovel_config_template.yaml')
+    #config_file_path = os.path.join(here, 'shovel_config.yaml')
+    print('config_file_path=%s' % config_file_path)
+    if not os.path.exists(config_file_path):
+        shutil.copyfile(config_file_template_path, config_file_path)
+        print('copy config file from template, config_file_path=%s' %
+              config_file_path)
+except Exception as e:
+    print("Exception: " + str(e))
+
 # Load the package's __version__.py module as a dictionary.
 about = {}
 if not VERSION:
@@ -60,7 +73,6 @@ setup(
     version=about['__version__'],
     description=DESCRIPTION,
     long_description=long_description,
-    long_description_content_type='text/markdown',
     author=AUTHOR,
     author_email=EMAIL,
     python_requires=REQUIRES_PYTHON,
@@ -81,9 +93,7 @@ setup(
     data_files=[
         ('config', ['shovel_config_template.yaml',
                     'shovel_config.yaml',
-                    'shovel_logging_config.ini']),
-        ('config-elastic-compare', ['config/ElasticCompare/es-compare-query-stmt-storage-quarantine.json',
-                                    'config/ElasticCompare/es-compare-query-stmt-violation.json'])],
+                    'shovel_logging_config.ini'])],
     scripts=['scripts/p4integratebyjob.py',
              'scripts/elasticsearchcompare.py']
 )
