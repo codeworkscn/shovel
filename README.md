@@ -53,11 +53,9 @@ init your own configuration, follow steps:
 #### tools usage samples
 
 - `python2 scripts/p4integratebyjob.py -j MyP4JobId`
-- `python2 scripts/elasticsearchcompare.py --leftIndex=tmcas_violation_2018.09  --rightIndex=tmcas_violation_compare_2018.09 --queryStmtFile=config/ElasticCompare/es-compare-query-stmt-violation.json --keyFields=tm_violator,tm_timestamp,tm_trace_id`
-- `python2 scripts/elasticsearchcompare.py --leftIndex=tmcas_quarantine_2018.09  --rightIndex=tmcas_quarantine_compare_2018.09 --queryStmtFile=config/ElasticCompare/es-compare-query-stmt-storage-quarantine.json --keyFields=tm_unique_log_id`
+- `python2 scripts/elasticsearchcompare.py --leftIndex=codeworks_2018.*  --rightIndex=codeworks_compare_2018.* --queryStmtFile=samples/es-query-stmt-sample.json --keyFields=timestamp,user_email`
 - `python2 scripts/csv2json.py --source=a.csv --target=a.json`
 - `python2 scripts/json2csv.py --source=b.json --target=b.csv`
-
 
 ---
 

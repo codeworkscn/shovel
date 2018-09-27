@@ -2,8 +2,11 @@
   "size": 10000,
   "_source": {
     "includes": [
-      "tm_*",
-      "cass_*"
+      "*"
+    ],
+    "excludes": [
+      "_*",
+      "@*"
     ]
   },
   "query": {
@@ -11,18 +14,16 @@
       "filter": [
         {
           "terms": {
-            "tm_module": [
-              "box-quarantine",
-              "dropbox-quarantine",
-              "googledrive-quarantine"
+            "user_email": [
+              "codeworkscn@gmail.com"
             ]
           }
         },
         {
           "range": {
-            "tm_timestamp": {
-              "gte": "2018-09-17 11:00:00",
-              "lt": "2018-09-21 00:00:00",
+            "timestamp": {
+              "gte": "2018-09-02 00:00:00",
+              "lt": "2018-09-01 00:00:00",
               "format": "yyyy-MM-dd HH:mm:ss"
             }
           }
@@ -32,7 +33,7 @@
   },
   "sort": [
     {
-      "tm_timestamp": {
+      "timestamp": {
         "order": "desc"
       }
     }
