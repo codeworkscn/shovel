@@ -8,8 +8,8 @@ Tools suite for DevOps, build by Python
 
 - VSC tools
   - [x] p4 integrate by job
-  - [ ] initial import git repository from p4 export
-  - [ ] auto sync from p4 to git
+  - [x] initial import git repository from p4 export & sync from p4 to git
+    - refer doc [sync git repository from p4 depot path](docs/sync-git-repository-from-p4-depot-path.md)
 - elasticsearch tools
   - [x] data compare between indices
   - [ ] data reindex migration from index to another
@@ -46,8 +46,7 @@ configuration items are locate in configuration file `shovel_config.yaml`.
 
 init your own configuration, follow steps:
 1. copy `shovel_config_template.yaml` as `shovel_config.yaml`
-    - Linux `cp shovel_config_template.yaml shovel_config.yaml`
-    - Windows `copy shovel_config_template.yaml shovel_config.yaml`
+    - `python2 setup.py install` will auto created `shovel_config.yaml` 
 2. set configuration value in `shovel_config.yaml`
 
 #### tools usage samples
